@@ -205,3 +205,27 @@ body {
     }
 }
 
+/* --- CINEMATIC ANIMATIONS --- */
+
+/* Apply the custom cinematic animation to the text container */
+.animate-fade-in {
+    opacity: 0; /* Starts completely invisible */
+    animation: cinematicReveal 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.3s; /* Slight delay so it triggers beautifully after the page loads */
+}
+
+/* Defining the fade-in and smooth push-in movement */
+@keyframes cinematicReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.98); /* Starts lower and slightly smaller */
+        filter: blur(4px); /* Optional: Adds a subtle lens-focus blur effect at the start */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1); /* Ends at its default position and size */
+        filter: blur(0);
+    }
+}
+
+

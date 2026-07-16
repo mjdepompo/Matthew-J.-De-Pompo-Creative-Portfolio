@@ -450,3 +450,65 @@ body {
     transform: scale(1.01);
 }
 
+/* ==========================================================================
+   10. MIXED ASPECT RATIO RESPONSIVE PHOTO GRID
+   ========================================================================== */
+
+/* Enforces exactly 3 columns on desktop screens, shrinking down gracefully on mobile */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr)); /* Exactly 3 even tracks per row */
+    gap: 20px;
+    width: 100%;
+}
+
+/* Base image container box acting as a strict cropping lens */
+.photo-item {
+    position: relative;
+    width: 100%;
+    background-color: #1c1c1e;
+    border: 1px solid #2c2c2e;
+    border-radius: 8px;
+    overflow: hidden; /* Critically chops off the rest of the giant 4000px photo */
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Forces vertical frames into an elegant portrait shape */
+.photo-item.vertical-frame {
+    aspect-ratio: 4 / 5;
+}
+
+/* Forces horizontal frames into a cinematic widescreen shape */
+.photo-item.horizontal-frame {
+    aspect-ratio: 16 / 9;
+}
+
+/* Forces your giant raw photos to instantly shrink and scale to fit inside the frame */
+.photo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Shrinks the giant image to fill the frame without distortion */
+    object-position: center; /* Centers the crop boundary on your photo's focus */
+    display: block;
+}
+
+.photo-item:hover {
+    border-color: #ffffff;
+    transform: translateY(-2px);
+}
+
+/* --- MOBILE LAYOUT ADJUSTMENTS --- */
+@media (max-width: 900px) {
+    /* Drops down to 2 columns on tablets so the 4:5 files don't look too squished */
+    .photo-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    /* Drops down to 1 single column on mobile devices */
+    .photo-grid {
+        grid-template-columns: 1fr;
+    }
+}
+

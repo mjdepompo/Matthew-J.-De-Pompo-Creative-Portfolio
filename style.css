@@ -27,8 +27,40 @@ body {
     gap: 30px;
 }
 
-/* Container for text alignment */
+/* Container that locks into a perfect responsive 16:9 cinematic aspect ratio */
+.hero-section {
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+    aspect-ratio: 16 / 9; /* Enforces the 16:9 shape */
+    background-image: url('hero-bg.jpg'); /* Your uploaded photo filename */
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #2c2c2e;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    margin-top: 40px;
+}
+
+/* Dark tint layer over the photo so your white text stays perfectly readable */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(18, 18, 18, 0.75); /* Adjust 0.75 to make it darker or lighter */
+    z-index: 1;
+}
+
+/* Forces text content to sit cleanly above the dark tint */
 .hero-container {
+    position: relative;
+    z-index: 2;
     padding: 20px;
 }
 

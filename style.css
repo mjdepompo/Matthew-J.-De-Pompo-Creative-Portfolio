@@ -228,104 +228,102 @@ body {
     }
 }
 
-/* --- PORTFOLIO GALLERY STYLES --- */
+/* --- 2x2 SQUARE PORTAL GRID --- */
 
-.portfolio-container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 40px auto;
-    padding-top: 40px;
-}
-
-.portfolio-header {
-    text-align: left;
-    margin-bottom: 40px;
-}
-
-.portfolio-header h2 {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #f2f2f7;
-    margin-bottom: 8px;
-}
-
-.portfolio-header p {
-    color: #8e8e93;
-    font-size: 1rem;
-}
-
-/* Responsive grid that automatically wraps cards based on screen size */
-.projects-grid {
+/* Forces a strict 2-column layout on computers, handles scrolling on mobile */
+.category-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
     width: 100%;
+    max-width: 900px; /* Keeps the square blocks contained and elegant */
+    margin: 0 auto;
 }
 
-/* Sleek dark project containers */
-.project-card {
+/* Base card styling forcing a 1:1 Square structure */
+.category-card {
+    position: relative;
+    aspect-ratio: 1 / 1; /* Enforces absolute square layout */
     background-color: #1c1c1e;
     border: 1px solid #2c2c2e;
-    border-radius: 8px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none; /* Removes link underlines */
     overflow: hidden;
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
-    text-align: left;
 }
 
-/* Enforces widescreen 16:9 aspect ratio for your video and photo thumbnails */
-.card-media {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    background-color: #2c2c2e; /* Dark grey placeholder background */
-    cursor: pointer;
-}
-
-/* Temporary placeholder look until you add actual images */
-.placeholder-overlay {
+/* Dark professional tint overlay inside each panel */
+.category-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #8e8e93;
-    font-size: 0.9rem;
-    font-weight: 500;
-    letter-spacing: 1px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    background: radial-gradient(circle at center, rgba(28,28,30,0.2) 0%, rgba(18,18,18,0.8) 100%);
+    z-index: 1;
+    transition: background-color 0.3s ease;
 }
 
-/* Metadata text area underneath the thumbnail */
-.card-info {
-    padding: 20px;
+/* Centers text context neatly inside the block */
+.category-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 24px;
 }
 
-.card-info h3 {
-    font-size: 1.1rem;
+.category-content h3 {
+    color: #ffffff;
+    font-size: 1.5rem;
     font-weight: 600;
-    color: #ffffff;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
 }
 
-.card-info p {
-    font-size: 0.9rem;
+.category-content p {
     color: #8e8e93;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
 }
 
-/* --- INTERACTIVE HOVER EFFECTS --- */
-
-.project-card:hover {
-    transform: translateY(-6px);
-    border-color: #48484a;
+.category-content p span {
+    display: inline-block;
+    transition: transform 0.3s ease;
 }
 
-.project-card:hover .placeholder-overlay {
-    background-color: rgba(255, 255, 255, 0.05);
+/* --- INTERACTIVE PORTAL HOVERS --- */
+
+.category-card:hover {
+    transform: translateY(-4px) scale(1.01);
+    border-color: #ffffff;
+}
+
+/* Subtle accent lighting shift on overlay hover */
+.category-card:hover .category-overlay {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Makes label description glow white and animates arrow symbol pointing outward */
+.category-card:hover .category-content p {
     color: #ffffff;
 }
 
+.category-card:hover .category-content p span {
+    transform: translateX(4px);
+}
+
+/* --- RESPONSIVE MOBILE SQUEEZE (Optional) --- */
+@media (max-width: 600px) {
+    /* Converts grid layout into a simple stacked track if smartphone screens get too slim */
+    .category-grid {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+    }
+}
 
 

@@ -1,110 +1,28 @@
-/* Reset default browser spacing */
+/* ==========================================================================
+   1. GLOBAL RESETS & STYLING LOGIC
+   ========================================================================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Background grid layout to center everything perfectly */
 body {
     background: linear-gradient(135deg, #121212 0%, #1c1c1e 100%);
     color: #ffffff;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Stacks components top-to-bottom */
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding-top: 80px;
+    padding-top: 100px; /* Creates clearance beneath the navigation bar */
 }
 
-.nav-links {
-    display: flex;
-    list-style: none; /* Removes the dots */
-    padding: 0;
-    margin: 0;
-    gap: 30px;
-}
-
-/* Container that locks into a perfect responsive 16:9 cinematic aspect ratio */
-.hero-section {
-    position: relative;
-    width: 90%;
-    max-width: 1200px;
-    aspect-ratio: 16 / 9; /* Enforces the 16:9 shape */
-    background-image: url('hero-bg.jpg'); /* Your uploaded photo filename */
-    background-size: cover;
-    background-position: center;
-    border-radius: 12px;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #2c2c2e;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-    margin-top: 40px;
-}
-
-/* Dark tint layer over the photo so your white text stays perfectly readable */
-.hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(18, 18, 18, 0.75); /* Adjust 0.75 to make it darker or lighter */
-    z-index: 1;
-}
-
-/* Forces text content to sit cleanly above the dark tint */
-.hero-container {
-    position: relative;
-    z-index: 2;
-    padding: 20px;
-}
-
-/* Bold, modern typography for your name */
-.name {
-    font-size: 3rem;
-    font-weight: 700;
-    letter-spacing: -1px;
-    margin-bottom: 8px;
-    color: #f2f2f7;
-}
-
-/* Muted grey for the subtitle */
-.subtitle {
-    font-size: 1.2rem;
-    color: #8e8e93;
-    margin-bottom: 32px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-/* Sleek dark button with smooth hover transition */
-.portfolio-btn {
-    display: inline-block;
-    text-decoration: none;
-    background-color: #2c2c2e;
-    color: #ffffff;
-    padding: 14px 28px;
-    font-size: 1rem;
-    font-weight: 500;
-    border: 1px solid #48484a;
-    border-radius: 6px;
-    transition: all 0.3s ease;
-}
-
-/* Light up effect on hover */
-.portfolio-btn:hover {
-    background-color: #ffffff;
-    color: #121212;
-    border-color: #ffffff;
-    transform: translateY(-2px);
-}
-
-/* --- NAVIGATION STYLES --- */
+/* ==========================================================================
+   2. FIXED NAVIGATION BAR STYLES
+   ========================================================================== */
 .navbar {
     position: fixed;
     top: 0;
@@ -128,8 +46,10 @@ body {
 
 .nav-links {
     display: flex;
-    list-style: none;
+    list-style: none; /* Removes browser bullet circles */
     gap: 30px;
+    padding: 0;
+    margin: 0;
 }
 
 .nav-links a {
@@ -140,11 +60,12 @@ body {
     transition: color 0.3s ease;
 }
 
-.nav-links a:hover, .nav-links a.active {
+.nav-links a:hover, 
+.nav-links a.active {
     color: #ffffff;
 }
 
-/* Hide checkbox and hamburger icon by default (Desktop) */
+/* Responsive Hamburger Menu Trigger Layouts (Hidden on Desktop) */
 .menu-toggle {
     display: none;
 }
@@ -163,99 +84,129 @@ body {
     transition: all 0.3s ease;
 }
 
-/* --- MOBILE RESPONSIVE STYLES (Under 768px) --- */
-@media (max-width: 768px) {
-    .navbar {
-        padding: 20px;
-    }
-
-    .hamburger {
-        display: flex;
-    }
-
-    /* Absolute position the dropdown menu overlay */
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: #121212;
-        border-bottom: 1px solid #1c1c1e;
-        padding: 20px 0;
-        text-align: center;
-        gap: 20px;
-    }
-
-    /* When hidden checkbox is checked, display the dropdown menu */
-    .menu-toggle:checked ~ .nav-links {
-        display: flex;
-    }
-
-    /* Optional: Animate hamburger lines into an 'X' when checked */
-    .menu-toggle:checked ~ .hamburger span:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-    .menu-toggle:checked ~ .hamburger span:nth-child(2) {
-        opacity: 0;
-    }
-    .menu-toggle:checked ~ .hamburger span:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-    }
+/* ==========================================================================
+   3. INDEX / HOME PAGE HERO WIDESCREEN SECTION
+   ========================================================================== */
+.hero-section {
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+    aspect-ratio: 16 / 9; /* Enforces strict film widescreen configuration */
+    background-image: url('hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #2c2c2e;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    margin-top: 40px;
 }
 
-/* --- CINEMATIC ANIMATIONS --- */
-
-/* Apply the custom cinematic animation to the text container */
-.animate-fade-in {
-    opacity: 0; /* Starts completely invisible */
-    animation: cinematicReveal 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    animation-delay: 0.3s; /* Slight delay so it triggers beautifully after the page loads */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(18, 18, 18, 0.75); /* Dark cinematic focus filter layer */
+    z-index: 1;
 }
 
-/* Defining the fade-in and smooth push-in movement */
-@keyframes cinematicReveal {
-    0% {
-        opacity: 0;
-        transform: translateY(30px) scale(0.98); /* Starts lower and slightly smaller */
-        filter: blur(4px); /* Optional: Adds a subtle lens-focus blur effect at the start */
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0) scale(1); /* Ends at its default position and size */
-        filter: blur(0);
-    }
+.hero-container {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
 }
 
-/* --- 2x2 SQUARE PORTAL GRID --- */
+.name {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+    color: #f2f2f7;
+}
 
-/* Forces a strict 2-column layout on computers, handles scrolling on mobile */
+.subtitle {
+    font-size: 1.2rem;
+    color: #8e8e93;
+    margin-bottom: 32px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.portfolio-btn {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #2c2c2e;
+    color: #ffffff;
+    padding: 14px 28px;
+    font-size: 1rem;
+    font-weight: 500;
+    border: 1px solid #48484a;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.portfolio-btn:hover {
+    background-color: #ffffff;
+    color: #121212;
+    border-color: #ffffff;
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   4. PROJECTS / PORTFOLIO INTRO HEADER SECTION
+   ========================================================================== */
+.portfolio-header {
+    width: 100%;
+    max-width: 900px; /* Matches the content boundaries of your 2x2 grid */
+    text-align: left;
+    margin: 40px auto 60px auto; /* 60px bottom space cleanly pushes the grid away */
+    padding: 0 10px;
+}
+
+.portfolio-header h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #f2f2f7;
+    margin-bottom: 8px;
+}
+
+.portfolio-header p {
+    color: #8e8e93;
+    font-size: 1rem;
+}
+
+/* ==========================================================================
+   5. 2x2 SQUARE PORTAL TRACKING SYSTEM
+   ========================================================================== */
 .category-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* Forms symmetrical two-column grid tracks */
     gap: 24px;
     width: 100%;
-    max-width: 900px; /* Keeps the square blocks contained and elegant */
+    max-width: 900px;
     margin: 0 auto;
 }
 
-/* Base card styling forcing a 1:1 Square structure */
 .category-card {
     position: relative;
-    aspect-ratio: 1 / 1; /* Enforces absolute square layout */
+    aspect-ratio: 1 / 1; /* Enforces strict mathematical square layouts */
     background-color: #1c1c1e;
     border: 1px solid #2c2c2e;
     border-radius: 12px;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-decoration: none; /* Removes link underlines */
+    text-decoration: none;
     overflow: hidden;
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+    /* Includes transition hooks to manage zooming background sizing textures later */
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, background-size 0.4s ease;
 }
 
-/* Dark professional tint overlay inside each panel */
 .category-overlay {
     position: absolute;
     top: 0;
@@ -267,7 +218,6 @@ body {
     transition: background-color 0.3s ease;
 }
 
-/* Centers text context neatly inside the block */
 .category-content {
     position: relative;
     z-index: 2;
@@ -296,19 +246,16 @@ body {
     transition: transform 0.3s ease;
 }
 
-/* --- INTERACTIVE PORTAL HOVERS --- */
-
+/* --- GRID MOTION ACTIONS --- */
 .category-card:hover {
     transform: translateY(-4px) scale(1.01);
     border-color: #ffffff;
 }
 
-/* Subtle accent lighting shift on overlay hover */
 .category-card:hover .category-overlay {
     background-color: rgba(255, 255, 255, 0.02);
 }
 
-/* Makes label description glow white and animates arrow symbol pointing outward */
 .category-card:hover .category-content p {
     color: #ffffff;
 }
@@ -317,48 +264,102 @@ body {
     transform: translateX(4px);
 }
 
-/* --- RESPONSIVE MOBILE SQUEEZE (Optional) --- */
-@media (max-width: 600px) {
-    /* Converts grid layout into a simple stacked track if smartphone screens get too slim */
-    .category-grid {
-        grid-template-columns: 1fr;
-        max-width: 100%;
-    }
-}
-
-/* --- TEMPORARY BACKGROUND PLACEHOLDERS --- */
-
-/* Photography Panel Placeholder */
+/* ==========================================================================
+   6. CARDS ASSET BACKGROUND BACKGROUND HOOKS (PLACEHOLDERS)
+   ========================================================================== */
 .bg-photography {
-    background-color: #2c2c2e; /* Temporary solid dark grey */
+    background-color: #2c2c2e;
     background-size: cover;
     background-position: center;
 }
 
-/* Videography Panel Placeholder */
 .bg-videography {
-    background-color: #3a3a3c; /* Slightly different tone to see separations */
+    background-color: #3a3a3c;
     background-size: cover;
     background-position: center;
 }
 
-/* Live Events Panel Placeholder */
 .bg-live-events {
     background-color: #2c2c2e;
     background-size: cover;
     background-position: center;
 }
 
-/* VFX Panel Placeholder */
 .bg-vfx {
     background-color: #3a3a3c;
     background-size: cover;
     background-position: center;
 }
 
-/* --- ZOOM EFFECT PREPARATION --- */
-.category-card {
-    /* Add this single property to your existing .category-card block to prepare for beautiful image zooms on hover */
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, background-size 0.4s ease;
+/* ==========================================================================
+   7. CINEMATIC TEXT ANIMATIONS
+   ========================================================================== */
+.animate-fade-in {
+    opacity: 0;
+    animation: cinematicReveal 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.3s;
 }
+
+@keyframes cinematicReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.98);
+        filter: blur(4px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+/* ==========================================================================
+   8. MOBILE RESPONSIVE MEDIA QUERIES
+   ========================================================================== */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 20px;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #121212;
+        border-bottom: 1px solid #1c1c1e;
+        padding: 20px 0;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .menu-toggle:checked ~ .nav-links {
+        display: flex;
+    }
+
+    .menu-toggle:checked ~ .hamburger span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .menu-toggle:checked ~ .hamburger span:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-toggle:checked ~ .hamburger span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
+
+@media (max-width: 600px) {
+    /* Collapses the 2x2 layout tracking path down to a stack when on mobile viewports */
+    .category-grid {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+    }
+}
+
 

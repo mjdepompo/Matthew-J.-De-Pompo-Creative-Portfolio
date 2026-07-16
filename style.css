@@ -362,4 +362,91 @@ body {
     }
 }
 
+/* ==========================================================================
+   9. PHOTOGRAPHY GALLERY STYLES
+   ========================================================================== */
+.photo-portfolio-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding-top: 40px;
+}
+
+/* Elegant minimalist back arrow link */
+.back-link {
+    display: inline-block;
+    color: #8e8e93;
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+    transition: color 0.3s ease;
+}
+
+.back-link:hover {
+    color: #ffffff;
+}
+
+/* Individual project container blocks */
+.photo-project-section {
+    margin-bottom: 80px; /* Big space between separate projects */
+    text-align: left;
+    width: 100%;
+}
+
+.project-meta {
+    margin-bottom: 24px;
+    border-left: 2px solid #2c2c2e;
+    padding-left: 16px;
+}
+
+.project-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 4px;
+    letter-spacing: -0.5px;
+}
+
+.project-desc {
+    color: #8e8e93;
+    font-size: 0.95rem;
+}
+
+/* The photo layouts - adjusts gracefully from a grid on desktop to single column on mobile */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    width: 100%;
+}
+
+.photo-item {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 2; /* Common photography dimension */
+    background-color: #1c1c1e;
+    border: 1px solid #2c2c2e;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Temporary placeholder box style */
+.photo-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #48484a;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    background-color: #1c1c1e;
+}
+
+/* Subtle frame highlights when hovering over images */
+.photo-item:hover {
+    border-color: #8e8e93;
+    transform: scale(1.01);
+}
 

@@ -228,4 +228,104 @@ body {
     }
 }
 
+/* --- PORTFOLIO GALLERY STYLES --- */
+
+.portfolio-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding-top: 40px;
+}
+
+.portfolio-header {
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.portfolio-header h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #f2f2f7;
+    margin-bottom: 8px;
+}
+
+.portfolio-header p {
+    color: #8e8e93;
+    font-size: 1rem;
+}
+
+/* Responsive grid that automatically wraps cards based on screen size */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    width: 100%;
+}
+
+/* Sleek dark project containers */
+.project-card {
+    background-color: #1c1c1e;
+    border: 1px solid #2c2c2e;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+    text-align: left;
+}
+
+/* Enforces widescreen 16:9 aspect ratio for your video and photo thumbnails */
+.card-media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-color: #2c2c2e; /* Dark grey placeholder background */
+    cursor: pointer;
+}
+
+/* Temporary placeholder look until you add actual images */
+.placeholder-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #8e8e93;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Metadata text area underneath the thumbnail */
+.card-info {
+    padding: 20px;
+}
+
+.card-info h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 6px;
+}
+
+.card-info p {
+    font-size: 0.9rem;
+    color: #8e8e93;
+}
+
+/* --- INTERACTIVE HOVER EFFECTS --- */
+
+.project-card:hover {
+    transform: translateY(-6px);
+    border-color: #48484a;
+}
+
+.project-card:hover .placeholder-overlay {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+}
+
+
 

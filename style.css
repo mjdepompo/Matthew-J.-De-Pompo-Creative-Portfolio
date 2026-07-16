@@ -230,6 +230,11 @@ body {
 
 /* --- 2x2 SQUARE PORTAL GRID --- */
 
+.portfolio-header {
+    text-align: left;
+    margin-bottom: 60px; /* Increased from 40px to create more space above the grid */
+}
+
 /* Forces a strict 2-column layout on computers, handles scrolling on mobile */
 .category-grid {
     display: grid;

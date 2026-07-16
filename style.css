@@ -33,7 +33,7 @@ body {
     width: 90%;
     max-width: 1200px;
     aspect-ratio: 16 / 9; /* Enforces the 16:9 shape */
-    background-image: url('hero-bg.jpg'); /* Your uploaded photo filename */
+    background-image: url('hero-bg-temp.jpg'); /* Your uploaded photo filename */
     background-size: cover;
     background-position: center;
     border-radius: 12px;

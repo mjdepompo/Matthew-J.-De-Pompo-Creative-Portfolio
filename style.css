@@ -326,4 +326,39 @@ body {
     }
 }
 
+/* --- TEMPORARY BACKGROUND PLACEHOLDERS --- */
+
+/* Photography Panel Placeholder */
+.bg-photography {
+    background-color: #2c2c2e; /* Temporary solid dark grey */
+    background-size: cover;
+    background-position: center;
+}
+
+/* Videography Panel Placeholder */
+.bg-videography {
+    background-color: #3a3a3c; /* Slightly different tone to see separations */
+    background-size: cover;
+    background-position: center;
+}
+
+/* Live Events Panel Placeholder */
+.bg-live-events {
+    background-color: #2c2c2e;
+    background-size: cover;
+    background-position: center;
+}
+
+/* VFX Panel Placeholder */
+.bg-vfx {
+    background-color: #3a3a3c;
+    background-size: cover;
+    background-position: center;
+}
+
+/* --- ZOOM EFFECT PREPARATION --- */
+.category-card {
+    /* Add this single property to your existing .category-card block to prepare for beautiful image zooms on hover */
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, background-size 0.4s ease;
+}
 

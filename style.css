@@ -15,6 +15,7 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding-top: 80px;
 }
 
 /* Container for text alignment */
@@ -61,3 +62,105 @@ body {
     border-color: #ffffff;
     transform: translateY(-2px);
 }
+
+/* --- NAVIGATION STYLES --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #121212;
+    border-bottom: 1px solid #1c1c1e;
+    z-index: 1000;
+}
+
+.nav-logo {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #f2f2f7;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #8e8e93;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: #ffffff;
+}
+
+/* Hide checkbox and hamburger icon by default (Desktop) */
+.menu-toggle {
+    display: none;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 2px;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+/* --- MOBILE RESPONSIVE STYLES (Under 768px) --- */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 20px;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    /* Absolute position the dropdown menu overlay */
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #121212;
+        border-bottom: 1px solid #1c1c1e;
+        padding: 20px 0;
+        text-align: center;
+        gap: 20px;
+    }
+
+    /* When hidden checkbox is checked, display the dropdown menu */
+    .menu-toggle:checked ~ .nav-links {
+        display: flex;
+    }
+
+    /* Optional: Animate hamburger lines into an 'X' when checked */
+    .menu-toggle:checked ~ .hamburger span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .menu-toggle:checked ~ .hamburger span:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-toggle:checked ~ .hamburger span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
+

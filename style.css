@@ -92,7 +92,7 @@ body {
     width: 90%;
     max-width: 1200px;
     aspect-ratio: 16 / 9; /* Enforces strict film widescreen configuration */
-    background-image: url('hero-bg.jpg');
+    background-image: url('hero-bg.png');
     background-size: cover;
     background-position: center;
     border-radius: 12px;

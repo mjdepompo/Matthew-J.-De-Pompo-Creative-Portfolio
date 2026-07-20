@@ -627,3 +627,35 @@ body {
     }
 }
 
+/* ==========================================================================
+   12. AUTOMATIC EMBED IFRAME COMPLIANCE STYLES
+   ========================================================================== */
+
+/* Overrides the left frame specifically to lock video players into a fluid 16:9 shape */
+.video-list-preview-embed {
+    width: 320px; /* Gives the automatic player a slightly larger track window */
+    min-width: 320px;
+    aspect-ratio: 16 / 9;
+    background-color: #000000;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Forces the YouTube/Vimeo iframe code block to expand and fit perfectly inside its track */
+.video-list-preview-embed iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* --- RESPONSIVE DROPDOWN BREAKS FOR IFRAMES --- */
+@media (max-width: 768px) {
+    .video-list-preview-embed {
+        width: 100%;
+        min-width: 100%; /* Stacks the automatic video cleanly above the description text on phones */
+    }
+}
+

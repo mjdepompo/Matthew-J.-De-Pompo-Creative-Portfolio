@@ -1,0 +1,91 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Works | VFX & Motion</title> 
+    <link rel="stylesheet" href="style.css"> 
+</head> 
+<body> 
+
+    <!-- Navigation Bar (Matches your index.html standard) --> 
+    <nav class="navbar"> 
+        <div class="nav-logo">CREATIVE PORTFOLIO</div> 
+        <input type="checkbox" id="menu-toggle" class="menu-toggle"> 
+        <label for="menu-toggle" class="hamburger"> 
+            <span></span> 
+            <span></span> 
+            <span></span> 
+        </label> 
+        <ul class="nav-links"> 
+            <li><a href="index.html">Home</a></li> 
+            <li><a href="projects.html" class="active">My Works</a></li> 
+        </ul> 
+    </nav> 
+
+    <!-- Main Stacked Content Container --> 
+    <main class="photo-portfolio-container animate-fade-in"> 
+        
+        <!-- Section Header Metadata -->
+        <header class="portfolio-header"> 
+            <a href="projects.html" class="back-link">← Back to Categories</a> 
+            <h2>VFX & Motion Graphics</h2> 
+            <p>A collection of promotional motion design, 3D compositing, and visual effects breakdowns.</p> 
+        </header> 
+
+        <!-- SECTION 1: MOTION GRAPHICS --> 
+        <section class="photo-project-section"> 
+            <div class="project-meta"> 
+                <h3 class="project-title">Motion Graphics</h3> 
+                <p class="project-desc">Logo animations, promotional kinetic typography, lower thirds, and vector-based visual design assets.</p> 
+            </div> 
+            
+            <div class="video-list-vertical"> 
+                <!-- Video Item 1 -->
+               <!-- Video Link Item (Instagram Reel Portal) --> 
+                  <div class="video-list-item"> 
+                    <div class="video-list-preview-embed">
+                    <!-- Optional: If you want a background photo placeholder for this video, 
+                     upload an image to your repository and add it here: -->
+                      
+                   <img src="stocktonentr.png" style="width:100%; height:100%; object-fit:cover; position:absolute; z-index:1;">
+        
+                   <span class="play-icon" style="position:relative; z-index:2;">▶</span>
+                 </div>
+                <div class="video-list-details">
+                  <h4 class="video-list-title">Instagram Stockton Entrepreneurship Promtional Reel</h4>
+                  <p class="video-list-desc">Motion Graphic Instagram Reel for Stockton University's Entrepreneurship Program</p>
+                    <!-- Put your exact Instagram Reel link inside the href below -->
+                  <a href="https://www.instagram.com/reel/DM75lBxxkRu/?utm_source=ig_web_button_share_sheet" target="_blank" class="video-list-action">Open on Instagram →</a>
+                </div> 
+            </div>
+          </div> 
+        </section>
+
+        <!-- SECTION 2: VFX --> 
+        <section class="photo-project-section"> 
+            <div class="project-meta"> 
+                <h3 class="project-title">VFX</h3> 
+                <p class="project-desc">3D camera tracking, green screen compositing, object removal, rotoscoping, and digital environment builds.</p> 
+            </div> 
+            
+            <div class="video-list-vertical"> 
+                <!-- Video Item 2 -->
+                <div class="video-list-item"> 
+                    <div class="video-list-preview-embed">
+                        <!-- Automatic Vimeo Embed Player Layout -->
+                        <iframe src="https://vimeo.com" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-list-details">
+                        <h4 class="video-list-title">Cinematic Environment Compositing Reel</h4>
+                        <p class="video-list-desc">A deep dive into multi-pass rendering, parallax space integration, 3D point tracking data setups, and realistic lighting math match grades.</p>
+                        <a href="https://vimeo.com" target="_blank" class="video-list-action">Open on Vimeo →</a>
+                    </div> 
+                </div> 
+            </div> 
+        </section>
+
+    </main> 
+
+</body> 
+</html>

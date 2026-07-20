@@ -317,6 +317,31 @@ body {
    8. MOBILE RESPONSIVE MEDIA QUERIES
    ========================================================================== */
 @media (max-width: 768px) {
+
+      /* Overrides the home page container layout on mobile phones */
+    .hero-section {
+        width: 95%; /* Expands the card to fill more edge-to-edge screen space */
+        aspect-ratio: 3 / 4; /* Changes the shape to a tall portrait frame instead of a squished 16:9 track */
+        margin-top: 20px;
+    }
+
+    /* Scales down the text size slightly so it fits elegantly inside the phone frame */
+    .name {
+        font-size: 2.2rem; /* Shrinks your name from 3rem so it doesn't wrap awkwardly */
+        letter-spacing: -0.5px;
+    }
+
+    .subtitle {
+        font-size: 0.95rem; /* Shrinks the subtitles to fit comfortably on one line */
+        letter-spacing: 1px;
+        margin-bottom: 24px;
+    }
+    
+    .portfolio-btn {
+        padding: 12px 24px; /* Slightly tightens up button padding for touch screen precision */
+        font-size: 0.95rem;
+    }
+}
     .navbar {
         padding: 20px;
     }

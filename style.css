@@ -684,3 +684,46 @@ body {
     }
 }
 
+/* ==========================================================================
+   14. VFX BEFORE & AFTER STILL OVERLAYS
+   ========================================================================== */
+.vfx-card {
+    position: relative;
+}
+
+/* Base structural layout for the labels */
+.vfx-badge {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    pointer-events: none; /* Prevents text from blocking hover actions */
+}
+
+/* Dark professional subtle gray for original raw plate footages */
+.before-label {
+    background-color: #2c2c2e;
+    color: #aeaea2;
+    border: 1px solid #48484a;
+}
+
+/* Bright contrast white layer for finished work highlights */
+.after-label {
+    background-color: #ffffff;
+    color: #121212;
+}
+
+/* Semi-transparent accent badge for breakdown/matte passes */
+.breakout-label {
+    background-color: rgba(18, 18, 18, 0.8);
+    color: #ffffff;
+    border: 1px solid #2c2c2e;
+}
+

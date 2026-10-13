@@ -92,13 +92,13 @@
 
     <div class="carousel-wrapper">
         <!-- Navigation Arrows -->
-        <button class="carousel-btn prev-btn" id="prevSlide" aria-label="Previous Slide">&#10094;</button>
-        <button class="carousel-btn next-btn" id="nextSlide" aria-label="Next Slide">&#10095;</button>
+        <button class="carousel-btn prev-btn" id="prevSlide" aria-label="Previous Slide">❮</button>
+        <button class="carousel-btn next-btn" id="nextSlide" aria-label="Next Slide">❯</button>
 
         <!-- Track Containing Carousel Items -->
         <div class="carousel-track" id="carouselTrack">
             
-            <!-- Slide 1: Still Graphic (.png) -->
+            <!-- Slide 1: Still Graphic (.png) - Kept active for page load -->
             <div class="carousel-item active">
                 <div class="carousel-media-box">
                     <img src="Socerbugs.png" alt="scorebugs Design Still">
@@ -109,8 +109,8 @@
                 </div>
             </div>
 
-            <!-- Slide 2: Still Graphic (.png) -->
-            <div class="carousel-item active">
+            <!-- Slide 2: Still Graphic (.png) - Removed duplicate active class -->
+            <div class="carousel-item">
                 <div class="carousel-media-box">
                     <img src="Men's Soccer Starting Screen Plate.png" alt="Starting Screen Design Still">
                 </div>
@@ -148,11 +148,12 @@
 
         </div>
 
-        <!-- Carousel Indicators/Dots -->
+        <!-- Carousel Indicators/Dots - Updated to include all 4 indices -->
         <div class="carousel-dots" id="carouselDots">
             <span class="dot active" data-index="0"></span>
             <span class="dot" data-index="1"></span>
             <span class="dot" data-index="2"></span>
+            <span class="dot" data-index="3"></span>
         </div>
     </div>
 </section>
@@ -175,8 +176,10 @@
             slides[targetIndex].classList.add('active');
 
             // Manage active dot indicators
-            dots[currentIndex].classList.remove('active');
-            dots[targetIndex].classList.add('active');
+            if (dots[currentIndex] && dots[targetIndex]) {
+                dots[currentIndex].classList.remove('active');
+                dots[targetIndex].classList.add('active');
+            }
 
             currentIndex = targetIndex;
         }
@@ -202,6 +205,7 @@
     });
 </script>
 <!-- END OF CAROUSEL SHOWCASE SECTION -->
+
 
 
 

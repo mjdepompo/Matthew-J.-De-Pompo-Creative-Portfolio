@@ -84,7 +84,7 @@
           </div> 
         </section>
 
-        <!-- START OF CAROUSEL SHOWCASE SECTION -->
+       <!-- START OF CAROUSEL SHOWCASE SECTION -->
 <section class="photo-project-section">
     <div class="project-meta">
         <h3 class="project-title">Stills & Animation Clips</h3>
@@ -101,26 +101,26 @@
             <!-- Slide 1: Still Graphic (.png) -->
             <div class="carousel-item active">
                 <div class="carousel-media-box">
-                    <img src="your-image1.png" alt="Scorebug Graphic Design Still">
+                    <img src="your-image1.png" alt="Motion Graphic Design Still">
                 </div>
                 <div class="carousel-caption">
-                    <h4>Athletics Scorebugs</h4>
-                    <p>Custom Scorebugs for Athletics Livestreams.</p>
+                    <h4>Broadcast Title Concept</h4>
+                    <p>Style frame layout for upcoming sports broadcast package.</p>
                 </div>
             </div>
 
-            <!-- Slide 2: Animated Clip (.mov / wrapped in native html5 video) -->
+            <!-- Slide 2: Animated Clip (.mov / loops silently like a GIF) -->
             <div class="carousel-item">
                 <div class="carousel-media-box">
-                    <video controls preload="metadata" playsinline>
+                    <video autoplay loop muted playsinline preload="auto">
                         <source src="your-clip1.mov" type="video/quicktime">
                         <source src="your-clip1.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 </div>
                 <div class="carousel-caption">
-                    <h4>Halftime Full Screen Motion Graphic</h4>
-                    <p>Animated Graphic for Halftime.</p>
+                    <h4>Lower Third Loop Animation</h4>
+                    <p>Quick animation breakdown showing text transparency layers.</p>
                 </div>
             </div>
 
@@ -159,10 +159,6 @@
         let currentIndex = 0;
 
         function updateCarousel(targetIndex) {
-            // Pause any videos playing on the current slide before shifting
-            const currentVideo = slides[currentIndex].querySelector('video');
-            if(currentVideo) { currentVideo.pause(); }
-
             // Manage active item visibility class
             slides[currentIndex].classList.remove('active');
             slides[targetIndex].classList.add('active');
@@ -195,6 +191,7 @@
     });
 </script>
 <!-- END OF CAROUSEL SHOWCASE SECTION -->
+
 
 
                 <!-- SECTION 2: VFX (Before & After Stills) --> 

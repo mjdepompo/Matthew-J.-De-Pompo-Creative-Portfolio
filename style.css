@@ -728,7 +728,7 @@ body {
 }
 
 /* ==========================================================================
-   PORTFOLIO MIXED MEDIA CAROUSEL SYSTEM
+   PORTFOLIO DYNAMIC MEDIA CAROUSEL SYSTEM (Flexible Sizing)
    ========================================================================== */
 
 .carousel-wrapper {
@@ -739,47 +739,50 @@ body {
     border: 2px solid #B22222;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    /* Instructs container height to shrink/grow based on the active graphic */
+    height: min-content; 
+    display: flex;
+    flex-direction: column;
 }
 
 .carousel-track {
     position: relative;
     width: 100%;
-    height: 520px; /* Adjust based on your preferred asset display area height */
-}
-
-.carousel-item {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    z-index: 1;
-    transition: opacity 0.5s ease-in-out;
     display: flex;
     flex-direction: column;
 }
 
+.carousel-item {
+    position: relative; /* Changed from absolute to flow naturally within container bounds */
+    display: none;      /* Toggle layout display strictly via visibility classes now */
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    flex-direction: column;
+}
+
 .carousel-item.active {
+    display: flex;
     opacity: 1;
     z-index: 2;
 }
 
 .carousel-media-box {
-    flex: 1;
+    width: 100%;
     background-color: #000000;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    position: relative;
 }
 
 .carousel-media-box img,
 .carousel-media-box video {
     width: 100%;
-    height: 100%;
-    object-fit: contain; /* Keeps accurate aspect ratio framing for visual assets */
+    height: auto;         /* Breaks locked scaling rules */
+    max-height: 75vh;     /* Prevents tall graphic formats from blowing past the viewport */
+    object-fit: contain;  /* Safeguards structural rendering bounds */
+    display: block;
 }
 
 .carousel-caption {
@@ -787,6 +790,8 @@ body {
     padding: 15px 25px;
     border-top: 1px solid #dddddd;
     text-align: left;
+    position: relative;
+    z-index: 5;
 }
 
 .carousel-caption h4 {
@@ -806,8 +811,8 @@ body {
 /* Action Control Elements */
 .carousel-btn {
     position: absolute;
-    top: 40%;
-    transform: translateY(-50%);
+    top: 50%;
+    transform: translateY(-100%); /* Centers controls directly on vertical image split line */
     background: rgba(178, 34, 34, 0.8);
     color: #FFFFFF;
     border: none;
@@ -838,7 +843,7 @@ body {
 .dot {
     width: 12px;
     height: 12px;
-    background-box: padding-box;
+    background-clip: padding-box;
     background-color: rgba(255, 255, 255, 0.5);
     border: 2px solid #B22222;
     border-radius: 50%;
@@ -851,9 +856,4 @@ body {
     transform: scale(1.15);
 }
 
-/* Responsive Adaptive Sizing overrides */
-@media (max-width: 768px) {
-    .carousel-track { height: 420px; }
-    .carousel-btn { padding: 8px 12px; font-size: 1.2rem; }
-}
 

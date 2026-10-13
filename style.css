@@ -727,3 +727,133 @@ body {
     border: 1px solid #2c2c2e;
 }
 
+/* ==========================================================================
+   PORTFOLIO MIXED MEDIA CAROUSEL SYSTEM
+   ========================================================================== */
+
+.carousel-wrapper {
+    position: relative;
+    max-width: 850px;
+    margin: 40px auto;
+    background-color: #f9f9f9;
+    border: 2px solid #B22222;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.carousel-track {
+    position: relative;
+    width: 100%;
+    height: 520px; /* Adjust based on your preferred asset display area height */
+}
+
+.carousel-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 0.5s ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+
+.carousel-item.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+.carousel-media-box {
+    flex: 1;
+    background-color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel-media-box img,
+.carousel-media-box video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Keeps accurate aspect ratio framing for visual assets */
+}
+
+.carousel-caption {
+    background-color: #FFFFFF;
+    padding: 15px 25px;
+    border-top: 1px solid #dddddd;
+    text-align: left;
+}
+
+.carousel-caption h4 {
+    margin: 0 0 5px 0;
+    color: #B22222;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+.carousel-caption p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #555555;
+}
+
+/* Action Control Elements */
+.carousel-btn {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    background: rgba(178, 34, 34, 0.8);
+    color: #FFFFFF;
+    border: none;
+    font-size: 1.5rem;
+    padding: 12px 16px;
+    cursor: pointer;
+    z-index: 10;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-btn:hover {
+    background: #000000;
+}
+
+.prev-btn { left: 0; border-radius: 0 4px 4px 0; }
+.next-btn { right: 0; border-radius: 4px 0 0 4px; }
+
+/* Control Navigation Indicators (Dots) */
+.carousel-dots {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background-box: padding-box;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 2px solid #B22222;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.dot.active, .dot:hover {
+    background-color: #B22222;
+    transform: scale(1.15);
+}
+
+/* Responsive Adaptive Sizing overrides */
+@media (max-width: 768px) {
+    .carousel-track { height: 420px; }
+    .carousel-btn { padding: 8px 12px; font-size: 1.2rem; }
+}
+

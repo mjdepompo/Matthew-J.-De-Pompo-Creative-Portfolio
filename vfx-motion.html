@@ -84,6 +84,119 @@
           </div> 
         </section>
 
+        <!-- START OF CAROUSEL SHOWCASE SECTION -->
+<section class="photo-project-section">
+    <div class="project-meta">
+        <h3 class="project-title">Stills & Animation Clips</h3>
+    </div>
+
+    <div class="carousel-wrapper">
+        <!-- Navigation Arrows -->
+        <button class="carousel-btn prev-btn" id="prevSlide" aria-label="Previous Slide">&#10094;</button>
+        <button class="carousel-btn next-btn" id="nextSlide" aria-label="Next Slide">&#10095;</button>
+
+        <!-- Track Containing Carousel Items -->
+        <div class="carousel-track" id="carouselTrack">
+            
+            <!-- Slide 1: Still Graphic (.png) -->
+            <div class="carousel-item active">
+                <div class="carousel-media-box">
+                    <img src="your-image1.png" alt="Scorebug Graphic Design Still">
+                </div>
+                <div class="carousel-caption">
+                    <h4>Athletics Scorebugs</h4>
+                    <p>Custom Scorebugs for Athletics Livestreams.</p>
+                </div>
+            </div>
+
+            <!-- Slide 2: Animated Clip (.mov / wrapped in native html5 video) -->
+            <div class="carousel-item">
+                <div class="carousel-media-box">
+                    <video controls preload="metadata" playsinline>
+                        <source src="your-clip1.mov" type="video/quicktime">
+                        <source src="your-clip1.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="carousel-caption">
+                    <h4>Halftime Full Screen Motion Graphic</h4>
+                    <p>Animated Graphic for Halftime.</p>
+                </div>
+            </div>
+
+            <!-- Slide 3: Still Graphic (.png) -->
+            <div class="carousel-item">
+                <div class="carousel-media-box">
+                    <img src="your-image2.png" alt="Vector Asset Layout">
+                </div>
+                <div class="carousel-caption">
+                    <h4>Vector Asset Layout</h4>
+                    <p>Clean layout design built for 1080p overlay systems.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Carousel Indicators/Dots -->
+        <div class="carousel-dots" id="carouselDots">
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
+        </div>
+    </div>
+</section>
+
+<!-- Simple Vanilla Script for Carousel Operations -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const track = document.getElementById('carouselTrack');
+        const slides = Array.from(track.children);
+        const nextButton = document.getElementById('nextSlide');
+        const prevButton = document.getElementById('prevSlide');
+        const dotsContainer = document.getElementById('carouselDots');
+        const dots = Array.from(dotsContainer.children);
+        
+        let currentIndex = 0;
+
+        function updateCarousel(targetIndex) {
+            // Pause any videos playing on the current slide before shifting
+            const currentVideo = slides[currentIndex].querySelector('video');
+            if(currentVideo) { currentVideo.pause(); }
+
+            // Manage active item visibility class
+            slides[currentIndex].classList.remove('active');
+            slides[targetIndex].classList.add('active');
+
+            // Manage active dot indicators
+            dots[currentIndex].classList.remove('active');
+            dots[targetIndex].classList.add('active');
+
+            currentIndex = targetIndex;
+        }
+
+        nextButton.addEventListener('click', () => {
+            let nextIndex = currentIndex + 1;
+            if (nextIndex >= slides.length) { nextIndex = 0; } // Loop back to start
+            updateCarousel(nextIndex);
+        });
+
+        prevButton.addEventListener('click', () => {
+            let prevIndex = currentIndex - 1;
+            if (prevIndex < 0) { prevIndex = slides.length - 1; } // Loop to last item
+            updateCarousel(prevIndex);
+        });
+
+        dotsContainer.addEventListener('click', e => {
+            const targetDot = e.target.closest('.dot');
+            if (!targetDot) return;
+            const targetIndex = parseInt(targetDot.getAttribute('data-index'));
+            updateCarousel(targetIndex);
+        });
+    });
+</script>
+<!-- END OF CAROUSEL SHOWCASE SECTION -->
+
+
                 <!-- SECTION 2: VFX (Before & After Stills) --> 
        <!-- <section class="photo-project-section"> 
             <div class="project-meta"> 

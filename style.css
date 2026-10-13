@@ -739,31 +739,35 @@ body {
     border: 2px solid #B22222;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    /* Instructs container height to shrink/grow based on the active graphic */
-    height: min-content; 
-    display: flex;
-    flex-direction: column;
 }
 
+/* Stacks all slides on a grid row/column layout block so they share sizing space */
 .carousel-track {
     position: relative;
     width: 100%;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
 }
 
 .carousel-item {
-    position: relative; /* Changed from absolute to flow naturally within container bounds */
-    display: none;      /* Toggle layout display strictly via visibility classes now */
+    grid-column: 1;
+    grid-row: 1;
     width: 100%;
     opacity: 0;
-    transition: opacity 0.4s ease-in-out;
+    visibility: hidden;
+    pointer-events: none;
+    display: flex;
     flex-direction: column;
+    transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
 }
 
+/* Forces the container to organically map its dimensions to ONLY the active asset */
 .carousel-item.active {
-    display: flex;
+    position: relative;
     opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
     z-index: 2;
 }
 
@@ -773,15 +777,14 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
 }
 
 .carousel-media-box img,
 .carousel-media-box video {
     width: 100%;
-    height: auto;         /* Breaks locked scaling rules */
-    max-height: 75vh;     /* Prevents tall graphic formats from blowing past the viewport */
-    object-fit: contain;  /* Safeguards structural rendering bounds */
+    height: auto;         /* Breaks locked pixel dimensions completely */
+    max-height: 75vh;     /* Prevents tall asset layouts from overflowing vertically */
+    object-fit: contain;  /* Maintains precise asset scale ratios */
     display: block;
 }
 
@@ -808,11 +811,11 @@ body {
     color: #555555;
 }
 
-/* Action Control Elements */
+/* Action Control Elements (Centered over the graphic area) */
 .carousel-btn {
     position: absolute;
-    top: 50%;
-    transform: translateY(-100%); /* Centers controls directly on vertical image split line */
+    top: 40%;
+    transform: translateY(-50%);
     background: rgba(178, 34, 34, 0.8);
     color: #FFFFFF;
     border: none;
@@ -830,7 +833,7 @@ body {
 .prev-btn { left: 0; border-radius: 0 4px 4px 0; }
 .next-btn { right: 0; border-radius: 4px 0 0 4px; }
 
-/* Control Navigation Indicators (Dots) */
+/* Control Navigation Indicators (Dots Overlay) */
 .carousel-dots {
     position: absolute;
     top: 20px;
@@ -855,5 +858,11 @@ body {
     background-color: #B22222;
     transform: scale(1.15);
 }
+
+/* Adaptive mobile layout overrides */
+@media (max-width: 768px) {
+    .carousel-btn { padding: 8px 12px; font-size: 1.2rem; }
+}
+
 
 

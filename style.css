@@ -728,55 +728,66 @@ body {
 }
 
 /* ==========================================================================
-   PORTFOLIO DYNAMIC MEDIA CAROUSEL SYSTEM (Zero White Space Edition)
+   PORTFOLIO LOCKED MIXED MEDIA CAROUSEL SYSTEM
    ========================================================================== */
 
 .carousel-wrapper {
     position: relative;
     max-width: 850px;
     margin: 40px auto;
-    background-color: #000000; /* Dark background masks mixed asset transitions cleanly */
+    background-color: #111111; /* Clean dark background anchors transparency & framing nicely */
     border: 2px solid #B22222;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    
-    /* Instructs the entire component layout wrapper to tightly shrink to the active contents */
-    height: min-content; 
+    display: flex;
+    flex-direction: column;
 }
 
 .carousel-track {
     position: relative;
     width: 100%;
-    /* Uses a standard inline layout blocks to let inactive items sit isolated */
-    display: block; 
+    /* Locks the media display canvas area into a fixed 16:9 widescreen block */
+    aspect-ratio: 16 / 9; 
 }
 
 .carousel-item {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    /* Completely removes inactive slides from rendering calculations to eliminate whitespace gaps */
-    display: none; 
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    display: flex;
     flex-direction: column;
+    transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
 }
 
-/* Instantly collapses or expands the parent track height when a slide becomes active */
 .carousel-item.active {
-    display: flex;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    z-index: 2;
 }
 
 .carousel-media-box {
     width: 100%;
-    background-color: #000000;
+    flex: 1; /* claims all available canvas space above the description block */
+    background-color: #111111;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: center;     /* Perfectly centers your graphics vertically */
+    justify-content: center;   /* Perfectly centers your graphics horizontally */
+    overflow: hidden;
 }
 
 .carousel-media-box img,
 .carousel-media-box video {
-    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
     height: auto;
-    max-height: 75vh;
-    object-fit: contain;
+    object-fit: contain; /* Restricts graphic scales past boundaries without causing stretching */
     display: block;
 }
 
@@ -788,10 +799,10 @@ body {
     position: relative;
     z-index: 5;
     
-    /* Keeps the caption section locked at a fixed size across all graphics */
-    height: 95px; 
+    /* Strict size locks keep description layouts perfectly uniform across frames */
+    height: 105px; 
     box-sizing: border-box;
-    overflow-y: auto;
+    overflow-y: auto; /* Adds a minor scroll bar cleanly if descriptions run too long */
 }
 
 .carousel-caption h4 {
@@ -808,12 +819,11 @@ body {
     color: #555555;
 }
 
-/* Action Control Elements (Centered perfectly on the changing graphic layer) */
+/* Action Arrow Buttons (Centered directly over the 16:9 media zone split line) */
 .carousel-btn {
     position: absolute;
-    top: 50%;
-    /* Shifts position up dynamically to stay centered exactly relative to varying graphic heights */
-    transform: translateY(calc(-50% - 47px)); 
+    top: calc(50% - 52.5px); /* Centers navigation chevrons perfectly over your media box split */
+    transform: translateY(-50%);
     background: rgba(178, 34, 34, 0.8);
     color: #FFFFFF;
     border: none;
@@ -831,7 +841,7 @@ body {
 .prev-btn { left: 0; border-radius: 0 4px 4px 0; }
 .next-btn { right: 0; border-radius: 4px 0 0 4px; }
 
-/* Control Navigation Indicators (Dots Overlay) */
+/* Navigation Indicators (Dots Overlay) */
 .carousel-dots {
     position: absolute;
     top: 20px;
@@ -857,10 +867,11 @@ body {
     transform: scale(1.15);
 }
 
-/* Adaptive mobile layout overrides */
+/* Mobile display adaptation overrides */
 @media (max-width: 768px) {
     .carousel-btn { padding: 8px 12px; font-size: 1.2rem; }
 }
+
 
 
 

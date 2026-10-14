@@ -795,7 +795,13 @@ body {
     text-align: left;
     position: relative;
     z-index: 5;
+    
+    /* Locks the text section size across all graphics */
+    height: 95px; 
+    box-sizing: border-box;
+    overflow-y: auto; /* Adds a clean scrollbar if text description ever overflows */
 }
+
 
 .carousel-caption h4 {
     margin: 0 0 5px 0;
